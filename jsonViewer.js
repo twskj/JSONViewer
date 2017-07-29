@@ -182,12 +182,10 @@ function genBlock (val, level){
                 return span;
             }
 
-            var pattern = /\n/g;
-            if (pattern.test(val)) {
-                val = (val + "").replace(pattern, "<br />");
-            }
+            var newline_regex = /\n/g;
+            var tagName = newline_regex.test(val) ? "pre":"span";
 
-            var text = createElement("span","str",val);
+            var text = createElement(tagName,"str",val);
             span.appendChild(text);
             span.appendChild(createElement("span","q","\""));
             return span;
